@@ -4,6 +4,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostTestController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPostController;
+use App\Http\Controllers\API\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,3 +32,6 @@ Route::resource('users.posts', UserPostController::class)->only(['index']);
 Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 //Route::get('/users/{id}/posts', [UserPostController::class, 'index'])->name('users.posts.index');
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
