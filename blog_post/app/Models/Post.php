@@ -13,6 +13,9 @@ class Post extends Model
         'title',
         'excerpt',
         'body',
+        'slug',
+        'category_id',
+        'user_id'
     ];
 
     public function category()
