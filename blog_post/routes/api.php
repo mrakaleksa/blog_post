@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostTestController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserPostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +21,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Route::get('/posts/{id}', [PostTestController::class, 'show']);
+//Route::get('/posts', [PostTestController::class, 'index']);
+
+Route::resource('posts', PostController::class);
+Route::resource('users.posts', UserPostController::class)->only(['index']);
+
+Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+//Route::get('/users/{id}/posts', [UserPostController::class, 'index'])->name('users.posts.index');
